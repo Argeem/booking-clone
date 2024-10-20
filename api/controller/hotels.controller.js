@@ -1,10 +1,6 @@
-import express from 'express';
 import Hotel from '../models/Hotel.js';
 
-const router = express.Router();
-
-// create
-router.post('/', async (req, res) => {
+export const createHotel = async (req, res, next) => {
   const newHotel = new Hotel(req.body);
 
   try {
@@ -13,10 +9,9 @@ router.post('/', async (req, res) => {
   } catch (err) {
     next(err);
   }
-});
+};
 
-// update
-router.put('/:id', async (req, res) => {
+export const updateHotel = async (req, res, next) => {
   const id = req.params.id;
   const body = req.body;
 
@@ -30,10 +25,9 @@ router.put('/:id', async (req, res) => {
   } catch (err) {
     next(err);
   }
-});
+};
 
-// delete
-router.delete('/:id', async (req, res) => {
+export const deleteHotel = async (req, res, next) => {
   const id = req.params.id;
 
   try {
@@ -42,10 +36,9 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     next(err);
   }
-});
+};
 
-// get
-router.get('/:id', async (req, res) => {
+export const getHotel = async (req, res, next) => {
   const id = req.params.id;
   try {
     const hotel = await Hotel.findById(id);
@@ -53,16 +46,13 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     next(err);
   }
-});
+};
 
-// get all
-router.get('/', async (req, res, next) => {
+export const getAllHotels = async (req, res, next) => {
   try {
     const hotels = await Hotel.find();
     res.status(200).json(hotels);
   } catch (err) {
     next(err);
   }
-});
-
-export default router;
+};
