@@ -57,4 +57,28 @@ const getAllHotels = async (req, res, next) => {
   }
 };
 
-export { createHotel, updateHotel, deleteHotel, getHotel, getAllHotels };
+const countByCity = async (req, res, next) => {
+  const cities = req.query.cities.split(',');
+  console.log('test' + cities);
+
+  try {
+    const countHotels = await Promise.all(
+      cities.map((city) => {
+        return Hotel.countDocuments({ city });
+      }),
+    );
+    console.log(countHotels);
+    res.status(200).json(countHotels);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export {
+  createHotel,
+  updateHotel,
+  deleteHotel,
+  getHotel,
+  getAllHotels,
+  countByCity,
+};
