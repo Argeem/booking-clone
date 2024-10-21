@@ -4,3 +4,6 @@ api/.env
 # log
 combined.log
 error.log
+
+# client
+client/node_modules/
