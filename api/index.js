@@ -7,7 +7,7 @@ import userRoute from './routes/users.route.js';
 import hotelRoute from './routes/hotels.route.js';
 import roomRoute from './routes/rooms.route.js';
 import cookieParser from 'cookie-parser';
-import { loggerModule } from './utils/log.js';
+import { loggerModule } from './utils/logger.js';
 
 const app = express();
 dotenv.config();

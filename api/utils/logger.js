@@ -17,7 +17,8 @@ const logger = winston.createLogger({
 
 export const loggerModule = (req, res, next) => {
   logger.info(
-    `${req.method} ${req.url} - ${req.ip} - Body: ${JSON.stringify(req.body)}`,
+    `${req.method} ${req.url} - ${req.ip}
+[Body]: ${JSON.stringify(req.body)}`,
   );
   next();
 };
