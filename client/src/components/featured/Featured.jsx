@@ -20,7 +20,6 @@ const Featured = () => {
     };
   });
 
-  console.log(featuredLists);
   return (
     <div className="featured">
       {loading ? (
